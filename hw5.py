@@ -1,37 +1,34 @@
-def read_single_digit(d):
-    if d == '0':
-        return "영"
-    elif d == '1':
-        return "일"
-    elif d == '2':
-        return "이"
-    elif d == '3':
-        return "삼"
-    elif d == '4':
-        return "사"
-    elif d == '5':
-        return "오"
-    elif d == '6':
-        return "육"
-    elif d == '7':
-        return "칠"
-    elif d == '8':
-        return "팔"
-    elif d == '9':
-        return "구"
-    else:
-        return ""
+# 사용자 정의 함수
+def read_number(n):
+    # 일의 자리수 얻기
+    d1 = n % 10
 
-def read_number(num):
-    num_str = str(num)
+    # n에서 일의 자리 숫자 버리기
+    n //= 10
 
-    if len(num_str) == 1:
-        return read_single_digit(num_str[0])
-    elif len(num_str) == 2:
-        return read_single_digit(num_str[0]) + " " + read_single_digit(num_str[1])
-    elif len(num_str) == 3:
-        return read_single_digit(num_str[0]) + " " + read_single_digit(num_str[1]) + " " + read_single_digit(num_str[2])
+    # n에서 십의 자리수 얻기
+    d10 = n % 10
 
-number = input("세 자리 정수 입력: ")
-if number.isdigit() and 0 <= int(number) <= 999:
-    print(read_number(number))
+    # n에서 십의 자리 숫자 버리고 백의 자리수 남기기
+    n //= 10
+
+    read_single_digit(n)
+    read_single_digit(d10)
+    read_single_digit(d1)
+
+
+def read_single_digit(n):
+    if n == 0: print('영', end='')
+    elif n == 1: print('일', end='')
+    elif n == 2: print('이', end='')
+    elif n == 3: print('삼', end='')
+    elif n == 4: print('사', end='')
+    elif n == 5: print('오', end='')
+    elif n == 6: print('육', end='')
+    elif n == 7: print('칠', end='')
+    elif n == 8: print('팔', end='')
+    elif n == 9: print('구', end='')
+
+# 주 프로그램부
+num = int(input('세 자리 점수 입력: '))
+read_number(num)
