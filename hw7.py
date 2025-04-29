@@ -1,4 +1,5 @@
 shopping_bag = {}
+print('[구입]')
 while True:
     item = input('상품명? ')
     if item == '':
